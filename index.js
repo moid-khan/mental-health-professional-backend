@@ -12,6 +12,10 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+//import connection from kess.js
+const keys = require('./keys')
+
+
 const PORT = process.env.PORT || 5000
 
 //Adding Routes
@@ -20,7 +24,7 @@ app.use('/sessions', sessionRoutes)
 
 
 //connect to mongoDB
-mongoose.connect('mongodb+srv://moidkhan:1234@cluster0.ke5wk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
+mongoose.connect(keys.connection, () => {
 console.log('connected to mongoDB')    
 })
 
