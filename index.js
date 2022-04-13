@@ -22,6 +22,10 @@ const PORT = process.env.PORT || 5000
 app.use('/users', userRoutes)
 app.use('/sessions', sessionRoutes)
 
+app.get('/',(req,res)=>{
+    res.send('Welcome to Mental Health Professional App')
+})
+
 
 //connect to mongoDB
 mongoose.connect(keys.connection, () => {
