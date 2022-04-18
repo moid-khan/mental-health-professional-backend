@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 //importing routes
 const userRoutes = require('./routes/users')
 const sessionRoutes = require('./routes/sessions')
+const contactRoutes = require('./routes/contact')
 
 const app = express()
 app.use(cors())
@@ -21,6 +22,7 @@ const PORT = process.env.PORT || 5000
 //Adding Routes
 app.use('/users', userRoutes)
 app.use('/sessions', sessionRoutes)
+app.use('/contact', contactRoutes)
 
 app.get('/',(req,res)=>{
     res.send('Welcome to Mental Health Professional App')
