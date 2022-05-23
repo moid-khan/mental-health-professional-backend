@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const keys = require('./keys')
 
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 //Adding Routes
 app.use('/users', userRoutes)

@@ -1,7 +1,5 @@
 const express = require('express')
-
 const router = express.Router()
-
 const usersModel = require('../models/usersModel')
 
 const apiRes = {
@@ -13,6 +11,7 @@ const apiRes = {
 
 //get all users from usersModel
 router.get('/', (req, res) => {
+    // res.send("All Users")
     usersModel.find({}, (err, users) => {
         if (err) {
             apiRes.isSussessful = false
@@ -23,6 +22,8 @@ router.get('/', (req, res) => {
         } else {
             apiRes.data = users 
             apiRes.status = 200
+            apiRes.message = 'Users are fetched successfully'
+            apiRes.isSussessful = true
             res.status(200).send(apiRes)
         }
     })
@@ -40,6 +41,8 @@ router.get('/:id', (req, res) => {
         } else {
             apiRes.data = user
             apiRes.status = 200
+            apiRes.message = 'User is fetched successfully'
+            apiRes.isSussessful = true
             res.status(200).send(apiRes)
         }
     })
@@ -57,7 +60,9 @@ router.post('/', (req, res) => {
             res.status(apiRes.status).json(apiRes)
         } else {
             apiRes.data = user
-            apiRes.status = 200
+            apiRes.status = 200 
+            apiRes.message = 'User is saved successfully'
+            apiRes.isSussessful = true
             res.status(200).send(apiRes)
         }
     })
@@ -76,6 +81,8 @@ router.put('/:id', (req, res) => {
         } else {
             apiRes.data = user
             apiRes.status = 200
+            apiRes.message = 'User is updated successfully'
+            apiRes.isSussessful = true
             res.status(200).send(apiRes)
         }
     })
@@ -94,6 +101,8 @@ router.delete('/:id', (req, res) => {
         } else {
             apiRes.data = user
             apiRes.status = 200
+            apiRes.message = 'User is deleted successfully'
+            apiRes.isSussessful = true
             res.status(200).send(apiRes)
         }
     })
