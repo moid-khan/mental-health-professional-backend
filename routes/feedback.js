@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const usersModel = require('../models/usersModel')
+const feedbackModel = require('../models/feedbackModel')
 
 const apiRes = {
     isSussessful: true,
@@ -9,10 +9,10 @@ const apiRes = {
     status: null
 }
 
-//get all users from usersModel
+//get all users from feedbackModel
 router.get('/', (req, res) => {
     // res.send("All Users")
-    usersModel.find({}, (err, users) => {
+    feedbackModel.find({}, (err, users) => {
         if (err) {
             apiRes.isSussessful = false
             apiRes.message = 'Error in getting users'
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 
 //get user by id
 router.get('/:id', (req, res) => {
-    usersModel.findById(req.params.id, (err, user) => {
+    feedbackModel.findById(req.params.id, (err, user) => {
         if (err) {
             apiRes.isSussessful = false
             apiRes.message = 'Error in getting user'
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
 
 //post user
 router.post('/', (req, res) => {
-    const newUser = new usersModel(req.body)
+    const newUser = new feedbackModel(req.body)
     newUser.save((err, user) => {
         if (err) {
             apiRes.isSussessful = false
@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 
 //update user
 router.put('/:id', (req, res) => {
-    usersModel.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+    feedbackModel.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
         if (err) {
             apiRes.isSussessful = false
             apiRes.message = 'Error in updating user'
@@ -91,7 +91,7 @@ router.put('/:id', (req, res) => {
 
 //delete user
 router.delete('/:id', (req, res) => {
-    usersModel.findByIdAndRemove(req.params.id, (err, user) => {
+    feedbackModel.findByIdAndRemove(req.params.id, (err, user) => {
         if (err) {
             apiRes.isSussessful = false
             apiRes.message = 'Error in deleting user'

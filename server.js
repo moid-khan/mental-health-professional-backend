@@ -4,9 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 //importing routes
-const userRoutes = require('./routes/users')
-const sessionRoutes = require('./routes/sessions')
-const contactRoutes = require('./routes/contact')
+const userRoutes = require('./routes/feedback')
 
 const app = express()
 app.use(cors())
@@ -20,12 +18,10 @@ const keys = require('./keys')
 const PORT = process.env.PORT || 5001
 
 //Adding Routes
-app.use('/users', userRoutes)
-app.use('/sessions', sessionRoutes)
-app.use('/contacts', contactRoutes)
+app.use('/feedback', userRoutes)
 
 app.get('/',(req,res)=>{
-    res.send('Welcome to Mental Health Professional App')
+    res.send('Welcome to ITistics Solutions')
 })
 
 
